@@ -1,0 +1,21 @@
+my_settings:
+  xmpp:
+    server: localhost
+    port: 5280
+
+  drb_server:
+    server: 'mydrb.com'
+    port: 9090
+
+development:
+  << *my_settings
+
+testing:
+  << *my_settings
+
+production:
+  << *my_settings
+  xmpp:
+    server: 'myxmpp.com'
+    port: 80
+
