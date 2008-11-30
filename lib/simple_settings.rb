@@ -25,12 +25,10 @@ class SettingsHandler < Mash
     end
 
     def prune_data_by_environment(data)
-      if Object.const_defined?(ENV["RAILS_ENV"])
-        data = data[ENV["RAILS_ENV"]]
-      elsif Object.const_defined?(ENV["MERB_ENV"])
-        data = data[ENV["MERB_ENV"]]
-      end 
-      return data
+      env = ENV["RAILS_ENV"] || ENV["MERB_ENV"]
+      puts "Settings ENV: #{env}"
+      return data[env] if env
+      data
     end
   end
 end
