@@ -1,16 +1,24 @@
 == Simple Settings
 
 This gem exposes a Settings object for your Rails/Merb/Ruby apps.
-
 Attempts to load up "config/settings.yml" based on RAILS_ROOT or MERB_ROOT.
-
 Otherwise, tries to load "settings.yml"
+You can also assign variables on runtime if you choose to.
 
 == Example
 
   require 'rubygems'
   require 'simple_settings'
 
+  # ----------------
+  Settings.drb_server = "mydrb.com"
+
+  puts Settings[:drb_server]
+  #=> "mydrb.com"
+  puts Settings.drb_server
+  #=> "mydrb.com"
+
+  # ----------------
   Settings.xmpp = {:server => "localhost", :port => 5280}
 
   puts Settings.xmpp.server
@@ -18,4 +26,6 @@ Otherwise, tries to load "settings.yml"
   puts Settings[:xmpp][:port]
   #=> 5280
 
+== Acknowledgements
 
+Michael Bleigh, for his awesome Mash gem.
