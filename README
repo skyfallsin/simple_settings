@@ -1,0 +1,20 @@
+Simple Settings
+===============
+
+This gem exposes a Settings object for your Rails/Merb/Ruby apps. 
+By default, it loads up config/settings.yml
+
+Example
+=======
+
+require 'rubygems'
+require 'simple_settings'
+
+Settings.xmpp = {:server => "localhost", :port => 5280}
+
+puts Settings.xmpp.server
+#=> "localhost"
+puts Settings[:xmpp][:port]
+#=> 5280
+
+
