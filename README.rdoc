@@ -1,4 +1,4 @@
-== Simple Settings
+= Simple Settings
 
 This gem exposes a Settings object for your Rails/Merb/Ruby apps.
 Attempts to load up "config/settings.yml" based on RAILS_ROOT or MERB_ROOT.
