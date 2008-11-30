@@ -17,10 +17,20 @@ class SettingsHandler < Mash
     def load_from_yaml!(filename, complain=true)
       if File.exists?(filename)
         data = YAML.load(File.read(filename))
+        data = prune_data_by_environment(data)
         data.each{ |key, val| load!(key, val) } if data
       else
         puts "[simple_settings] Could not find settings file -- #{filename}" if complain
       end
+    end
+
+    def prune_data_by_environment(data)
+      if Object.const_defined?(ENV["RAILS_ENV"])
+        data = data[ENV["RAILS_ENV"]]
+      elsif Object.const_defined?(ENV["MERB_ENV"])
+        data = data[ENV["MERB_ENV"]]
+      end 
+      return data
     end
   end
 end
