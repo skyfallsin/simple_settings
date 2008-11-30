@@ -27,7 +27,7 @@ You can also assign variables on runtime if you choose to.
   #=> 5280
 
 == Example settings.yml
-  my_settings:
+  my_settings: &my_settings
     xmpp:
       server: localhost
       port: 5280
@@ -37,13 +37,13 @@ You can also assign variables on runtime if you choose to.
       port: 9090
 
   development:
-    << *my_settings
+    <<: *my_settings
 
   testing:
-    << *my_settings
+    <<: *my_settings
 
   production:
-    << *my_settings
+    <<: *my_settings
     xmpp:
       server: 'myxmpp.com'
       port: 80
